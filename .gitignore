@@ -1,0 +1,17 @@
+# Dataset
+dataset/
+
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Django
+db.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db

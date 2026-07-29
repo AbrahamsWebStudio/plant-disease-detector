@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detector</title>
+    <style>
+        :root {
+            --green: #2f855a;
+            --green-dark: #22543d;
+            --light: #f4f9f4;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #4b5563;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--light), #e6f7ea);
+            color: var(--text);
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 36px;
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1.2fr 0.8fr;
+        }
+        .card {
+            padding: 20px;
+            background: #f0fff4;
+            border-radius: 12px;
+            border: 1px solid #d8f3de;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: var(--green-dark);
+        }
+        form {
+            margin-top: 16px;
+        }
+        input[type="file"] {
+            margin-top: 8px;
+            margin-bottom: 12px;
+        }
+        button {
+            padding: 10px 16px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        ul {
+            padding-left: 20px;
+            color: var(--muted);
+        }
+        @media (max-width: 760px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Disease Detector</h1>
+        <p class="subtitle">A simple university AI prototype for classifying tomato leaf images.</p>
+        <div class="grid">
+            <div class="card">
+                <h2>Upload a leaf image</h2>
+                <form method="post" action="{% url 'predict' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Predict</button>
+                </form>
+            </div>
+            <div class="card">
+                <h2>What this app does</h2>
+                <ul>
+                    <li>Uses an AI image classifier</li>
+                    <li>Supports three classes: Healthy, Early Blight, Late Blight</li>
+                    <li>Shows a simple prediction result</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

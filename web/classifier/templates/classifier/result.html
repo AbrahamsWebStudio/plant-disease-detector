@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f4f9f4, #e6f7ea);
+            color: #1f2937;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 36px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .result {
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 12px;
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+        }
+        .error {
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 12px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+        }
+        a {
+            display: inline-block;
+            margin-top: 16px;
+            color: #2f855a;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% else %}
+            <div class="result">
+                <p><strong>Prediction:</strong> {{ prediction }}</p>
+                <p><strong>Confidence:</strong> {{ confidence|floatformat:2 }}</p>
+            </div>
+        {% endif %}
+        <p><a href="/">Try another image</a></p>
+    </div>
+</body>
+</html>
